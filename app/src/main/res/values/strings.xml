@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+
+    <string-array name="pizzas">
+        <item>Americana</item>
+        <item>Hawaiana</item>
+        <item>Clasica</item>
+        <item>ExtraGrande</item>
+    </string-array>
+</resources>
