@@ -70,6 +70,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroup"
+        android:layout_marginTop="30dp"
         android:text="Complementos"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/button_ordenar" />
