@@ -98,12 +98,63 @@ public class SpinnerActivity extends AppCompatActivity {
 
     public void showDialog(View view) {
 
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.activity_notification);
-        // Custom Android Allert Dialog Title
-        dialog.setTitle("Custom Dialog Example");
+        String tipo = (String) spn_lista.getSelectedItem();
+        int pc = spn_lista.getSelectedItemPosition();
+        int precio=0;
+        if(pc == 0){
+            precio = 30;
+        }else if(pc== 1){
+            precio = 40;
+        }else if(pc==2){
+            precio=50;
+        }else if(pc==3){
+            precio= 35;
+        }
 
-        dialog.show();
+        String masa="";
+        if(rbt_artesanal.isChecked()){
+            masa="Masa artesanal";
+        }else if(rbt_grueso.isChecked()){
+            masa="Masa gruesa";
+        }else if(rbt_delgada.isChecked()){
+            masa="Masa delgada";
+        }
+
+        int precio2=0;
+        String pedido="";
+        if(cb1.isChecked() && cb2.isChecked()){
+            precio2=precio+15;
+            pedido = "Extra queso mozarella y extra jamón";
+        }else if(cb1.isChecked()){
+            precio2=precio+10;
+            pedido = "Extra queso mozarella";
+        }else if(cb2.isChecked()){
+            precio2=precio+5;
+            pedido = "Extra jamon";
+        }else{
+            precio2=precio;
+            pedido = "nada agregado";
+        }
+
+//        final Dialog dialog = new Dialog(this);
+//        dialog.setContentView(R.layout.activity_notification);
+//        // Custom Android Allert Dialog Title
+//        dialog.setTitle("Custom Dialog Example");
+//
+//        dialog.show();
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Alert Dialog Title");
+        alertDialog.setMessage("Usted ha seleccionado: " + tipo +",el precio es "+precio2+" con "+pedido+"("+masa+")");
+        // Alert dialog button
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Alert dialog action goes here
+                        dialog.dismiss();// use dismiss to cancel alert dialog
+                    }
+                });
+        alertDialog.show();
 
 
         Notification notification = new NotificationCompat.Builder(this)
